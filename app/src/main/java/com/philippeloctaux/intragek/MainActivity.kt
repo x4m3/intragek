@@ -1,9 +1,12 @@
 package com.philippeloctaux.intragek
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+
+const val EXTRA_MESSAGE = "com.philippeloctaux.intragek.LOGIN"
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,5 +20,9 @@ class MainActivity : AppCompatActivity() {
         val editText = findViewById<EditText>(R.id.editText)
         val login = editText.text.toString()
         println(login)
+        val intent = Intent(this, DisplayMessageActivity::class.java).apply {
+            putExtra(EXTRA_MESSAGE, login)
+        }
+        startActivity(intent)
     }
 }
