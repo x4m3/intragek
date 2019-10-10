@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">intragek</string>
+    <string name="edit_login">Enter a login</string>
+    <string name="button_send">Send</string>
 </resources>
