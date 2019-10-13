@@ -2,4 +2,5 @@
     <string name="app_name">intragek</string>
     <string name="edit_login">Enter a login</string>
     <string name="button_send">Send</string>
+    <string name="error_empty_login">Empty login</string>
 </resources>
