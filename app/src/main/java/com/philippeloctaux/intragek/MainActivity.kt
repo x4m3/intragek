@@ -17,12 +17,12 @@ class MainActivity : AppCompatActivity() {
 
     /** Called when user taps on Send button */
     fun sendMessage(view: View) {
-        val editText = findViewById<EditText>(R.id.editText)
-        val login = editText.text.toString()
-        println(login)
-        val intent = Intent(this, DisplayMessageActivity::class.java).apply {
-            putExtra(EXTRA_MESSAGE, login)
+        val login = findViewById<EditText>(R.id.editText).text.toString()
+        if (login.isNotBlank()) {
+            val intent = Intent(this, DisplayMessageActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, login)
+            }
+            startActivity(intent)
         }
-        startActivity(intent)
     }
 }
