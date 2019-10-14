@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import com.philippeloctaux.intragek.hideKeyboard
 
 const val STUDENT = "com.philippeloctaux.intragek.STUDENT"
 
