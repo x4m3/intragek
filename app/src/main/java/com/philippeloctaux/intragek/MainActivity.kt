@@ -16,6 +16,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+    fun clearText(view: View) {
+        /* hide keyboard */
+        hideKeyboard(this@MainActivity, view)
+
+        /* clear text */
+        findViewById<EditText>(R.id.autologinText).text.clear()
+        findViewById<EditText>(R.id.studentText).text.clear()
+    }
+
     fun sendStudent(view: View) {
         /* hide keyboard */
         hideKeyboard(this@MainActivity, view)
