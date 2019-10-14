@@ -6,8 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.philippeloctaux.intragek.hideKeyboard
 
-const val EXTRA_MESSAGE = "com.philippeloctaux.intragek.LOGIN"
+const val STUDENT = "com.philippeloctaux.intragek.STUDENT"
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,19 +17,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    /** Called when user taps on Send button */
-    fun sendMessage(view: View) {
+    fun sendStudent(view: View) {
+        /* hide keyboard */
+        hideKeyboard(this@MainActivity, view)
 
-        val input = findViewById<EditText>(R.id.editText).text.toString()
+        /* get student login or email address from activity */
+        val input = findViewById<EditText>(R.id.studentText).text.toString()
+
+        /* make sure it passes through regex */
         val student = Regex(pattern = "^([a-z]+-?)+([1-9]?)\\.{1}([a-z]+-?)+(@epitech.eu)?")
             .find(input = input)?.value
 
         if (student.isNullOrBlank()) {
-            // display toast with error message
+            /* display toast with error message if it doesn't pass regex*/
             Toast.makeText(applicationContext, R.string.error_empty_login, Toast.LENGTH_LONG).show()
         } else {
+            /* pass student to intent and start new activity */
             val intent = Intent(this, DisplayMessageActivity::class.java).apply {
-                putExtra(EXTRA_MESSAGE, student)
+                putExtra(STUDENT, student)
             }
             startActivity(intent)
         }
