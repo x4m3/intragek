@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 
 const val STUDENT = "com.philippeloctaux.intragek.STUDENT"
+const val AUTOLOGIN = "com.philippeloctaux.intragek.AUTOLOGIN"
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,11 +51,10 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        downloadStudentImage(autologin, student)
-
         /* pass student to intent and start new activity */
         val intent = Intent(this, DisplayStudentActivity::class.java).apply {
             putExtra(STUDENT, student)
+            putExtra(AUTOLOGIN, autologin)
         }
         startActivity(intent)
     }
