@@ -22,26 +22,38 @@ class MainActivity : AppCompatActivity() {
         findViewById<EditText>(R.id.studentText).text.clear()
     }
 
-    fun sendStudent(view: View) {
+    fun sendStudentAutologin(view: View) {
         /* hide keyboard */
         hideKeyboard(this@MainActivity, view)
 
-        /* get student login or email address from activity */
-        val input = findViewById<EditText>(R.id.studentText).text.toString()
+        /* get input */
+        val student_input = findViewById<EditText>(R.id.studentText).text.toString()
+        val autologin_input = findViewById<EditText>(R.id.autologinText).text.toString()
 
         /* make sure it passes through regex */
-        val student = Regex(pattern = "^([a-z]+-?)+([1-9]?)\\.{1}([a-z]+-?)+")
-            .matchEntire(input = input)?.value
+        val student = Regex(pattern = "^([a-z]+-?)+([1-9]?)\\.{1}([a-z]+-?)+$")
+            .matchEntire(input = student_input)?.value
+        val autologin = Regex(pattern = "^(https:\\/\\/intra.epitech.eu\\/auth-)([a-z0-9]{40})\$")
+            .matchEntire(input = autologin_input)?.value
 
-        if (student.isNullOrBlank()) {
-            /* display toast with error message if it doesn't pass regex*/
-            Toast.makeText(applicationContext, R.string.error_empty_login, Toast.LENGTH_LONG).show()
-        } else {
-            /* pass student to intent and start new activity */
-            val intent = Intent(this, DisplayStudentActivity::class.java).apply {
-                putExtra(STUDENT, student)
-            }
-            startActivity(intent)
+        /* if autologin doesn't pass regex */
+        if (autologin.isNullOrBlank()) {
+            /* display toast */
+            Toast.makeText(applicationContext, R.string.error_invalid_autologin, Toast.LENGTH_LONG).show()
+            return
         }
+
+        /* if student doesn't pass regex */
+        if (student.isNullOrBlank()) {
+            /* display toast */
+            Toast.makeText(applicationContext, R.string.error_invalid_student, Toast.LENGTH_LONG).show()
+            return
+        }
+
+        /* pass student to intent and start new activity */
+        val intent = Intent(this, DisplayStudentActivity::class.java).apply {
+            putExtra(STUDENT, student)
+        }
+        startActivity(intent)
     }
 }
