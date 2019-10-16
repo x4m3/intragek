@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">intragek</string>
-    <string name="edit_login">Student login or email address</string>
+    <string name="edit_login">Student login</string>
     <string name="button_send">Send</string>
-    <string name="error_empty_login">Invalid login or email address</string>
+    <string name="error_empty_login">Invalid student login</string>
     <string name="autologin_url">Epitech autologin link</string>
     <string name="clear_button">Clear</string>
 </resources>

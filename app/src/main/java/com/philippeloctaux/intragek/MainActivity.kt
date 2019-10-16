@@ -33,8 +33,8 @@ class MainActivity : AppCompatActivity() {
         val input = findViewById<EditText>(R.id.studentText).text.toString()
 
         /* make sure it passes through regex */
-        val student = Regex(pattern = "^([a-z]+-?)+([1-9]?)\\.{1}([a-z]+-?)+(@epitech.eu)?")
-            .find(input = input)?.value
+        val student = Regex(pattern = "^([a-z]+-?)+([1-9]?)\\.{1}([a-z]+-?)+")
+            .matchEntire(input = input)?.value
 
         if (student.isNullOrBlank()) {
             /* display toast with error message if it doesn't pass regex*/
