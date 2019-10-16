@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, R.string.error_empty_login, Toast.LENGTH_LONG).show()
         } else {
             /* pass student to intent and start new activity */
-            val intent = Intent(this, DisplayMessageActivity::class.java).apply {
+            val intent = Intent(this, DisplayStudentActivity::class.java).apply {
                 putExtra(STUDENT, student)
             }
             startActivity(intent)
