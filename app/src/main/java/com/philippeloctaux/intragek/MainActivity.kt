@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
+        downloadStudentImage(autologin, student)
+
         /* pass student to intent and start new activity */
         val intent = Intent(this, DisplayStudentActivity::class.java).apply {
             putExtra(STUDENT, student)
