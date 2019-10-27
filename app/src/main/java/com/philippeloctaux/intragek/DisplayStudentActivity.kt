@@ -16,7 +16,7 @@ class DisplayStudentActivity : AppCompatActivity() {
         val autologin = intent.getStringExtra(AUTOLOGIN)
 
         /* get string from intent and set it to the TextView */
-        val textView = findViewById<TextView>(R.id.studentText).apply {
+        findViewById<TextView>(R.id.studentText).apply {
             text = student
         }
 
